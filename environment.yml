@@ -1,0 +1,12 @@
+name: nf-core-circrna-1.0.0
+channels:
+  - bioconda
+  - agbiome
+  - conda-forge
+  - defaults
+dependencies:
+  - pip=20.0.2
+  - python=2.7.15
+   - pip:
+      - numpy==1.16.4
+      - pysam==0.15.2
