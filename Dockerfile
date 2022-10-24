@@ -30,6 +30,8 @@ RUN sed -i '/conda activate base/d' ~/.bashrc
 # put /usr/bin at fron of path
 ENV PATH=/usr/bin:$PATH
 
+RUN pip install pysam numpy
+
 #find_circ
 WORKDIR /usr/src/app
 RUN wget --no-check-certificate http://www.circbase.org/download/find_circ.tar.gz
