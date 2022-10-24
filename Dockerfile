@@ -1,4 +1,4 @@
-FROM nfcore/base:1.14
+FROM ubuntu:18.04
 LABEL authors="Barry Digby" \
     description="Docker image containing all software requirements for the nf-core/circrna pipeline"
 
@@ -40,9 +40,6 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 
 # Set python2.7 as the default python
 RUN update-alternatives --set python /usr/bin/python2.7
-
-# deactivate base
-RUN sed -i '/conda activate base/d' ~/.bashrc
 
 # put /usr/bin at fron of path
 ENV PATH=/usr/bin:$PATH
