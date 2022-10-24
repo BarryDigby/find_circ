@@ -10,6 +10,7 @@ RUN apt-get install --yes build-essential \
                         gcc-multilib \
                         apt-utils \
                         zip \
+                        wget \
                         unzip \
                         expat \
                         libexpat-dev \
