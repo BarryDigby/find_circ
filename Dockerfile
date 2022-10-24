@@ -13,7 +13,8 @@ RUN apt-get install --yes build-essential \
                         unzip \
                         expat \
                         libexpat-dev \
-                        libtbb-dev
+                        libtbb-dev \
+                        bowtie2
                         
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt install python2.7
