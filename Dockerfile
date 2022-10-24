@@ -1,4 +1,4 @@
-FROM nfcore/base:1.14
+FROM python:2.7
 LABEL authors="Barry Digby" \
     description="Docker image containing all software requirements for the nf-core/circrna pipeline"
 
@@ -15,18 +15,6 @@ RUN apt-get install --yes build-essential \
                         libexpat-dev \
                         libtbb-dev \
                         bowtie2
-                        
-RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt install python2.7
-
-# Add 2.7 to the available alternatives
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
-
-# Set python2.7 as the default python
-RUN update-alternatives --set python /usr/bin/python2.7
-
-# remove conda from PATH
-ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 #find_circ
 WORKDIR /usr/src/app
