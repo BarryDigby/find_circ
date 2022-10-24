@@ -16,6 +16,22 @@ RUN apt-get install --yes build-essential \
                         libtbb-dev \
                         zlib1g-dev \
                         bowtie2
+                        libbz2-dev \
+                        liblzma-dev \
+                        gcc \
+                        cmake \
+                        libbamtools-dev \
+                        libboost-dev \
+                        libboost-iostreams-dev \
+                        libboost-log-dev \
+                        libboost-system-dev \
+                        libboost-test-dev \
+                        libcurl4-openssl-dev \
+                        libssl-dev \
+                        libz-dev 
+                        
+                        
+                        
 RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt install python2.7
 
