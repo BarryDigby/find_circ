@@ -25,6 +25,9 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 # Set python2.7 as the default python
 RUN update-alternatives --set python /usr/bin/python2.7
 
+# remove conda from PATH
+ENV PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
 #find_circ
 WORKDIR /usr/src/app
 RUN wget --no-check-certificate http://www.circbase.org/download/find_circ.tar.gz
