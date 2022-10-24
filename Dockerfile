@@ -15,7 +15,7 @@ RUN apt-get install --yes build-essential \
                         libexpat-dev \
                         libtbb-dev \
                         zlib1g-dev \
-                        bowtie2
+                        bowtie2 \
                         libbz2-dev \
                         liblzma-dev \
                         gcc \
