@@ -34,7 +34,7 @@ RUN apt-get install --yes build-essential \
                         
                         
 RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt install python2.7
+RUN apt install python2.7-dev
 
 # Add 2.7 to the available alternatives
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
