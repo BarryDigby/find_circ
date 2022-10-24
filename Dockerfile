@@ -47,6 +47,8 @@ RUN sed -i '/conda activate base/d' ~/.bashrc
 # put /usr/bin at fron of path
 ENV PATH=/usr/bin:$PATH
 
+RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && python2.7 get-pip.py
+
 RUN pip install pysam numpy
 
 #find_circ
