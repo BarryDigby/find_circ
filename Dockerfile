@@ -24,8 +24,11 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 # Set python2.7 as the default python
 RUN update-alternatives --set python /usr/bin/python2.7
 
-# remove conda from PATH
+# deactivate base
 RUN sed -i '/conda activate base/d' ~/.bashrc
+
+# put /usr/bin at fron of path
+ENV PATH=/usr/bin:$PATH
 
 #find_circ
 WORKDIR /usr/src/app
