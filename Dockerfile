@@ -19,7 +19,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt install python2.7
 
 # Add 2.7 to the available alternatives
-RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 
 # Set python2.7 as the default python
 RUN update-alternatives --set python /usr/bin/python2.7
