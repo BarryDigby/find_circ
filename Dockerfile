@@ -49,7 +49,7 @@ ENV PATH=/usr/bin:$PATH
 
 RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && python2.7 get-pip.py
 
-RUN pip install pysam numpy
+RUN pip2.7 install pysam numpy
 
 #find_circ
 WORKDIR /usr/src/app
