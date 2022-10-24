@@ -6,27 +6,53 @@ LABEL authors="Barry Digby" \
 RUN apt-get update; apt-get clean all;
 
 RUN apt-get install --yes build-essential \
+                        software-properties-common \
                         gcc-multilib \
                         apt-utils \
-                        curl \
                         zip \
                         unzip \
                         expat \
                         libexpat-dev \
-                        libtbb-dev
+                        libtbb-dev \
+                        zlib1g-dev \
+                        bowtie2 \
+                        libbz2-dev \
+                        liblzma-dev \
+                        gcc \
+                        cmake \
+                        libbamtools-dev \
+                        libboost-dev \
+                        libboost-iostreams-dev \
+                        libboost-log-dev \
+                        libboost-system-dev \
+                        libboost-test-dev \
+                        libcurl4-openssl-dev \
+                        libssl-dev \
+                        libz-dev 
+                        
+                        
+                        
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt install python2.7
 
-# Install the conda environment
-COPY environment.yml /
-RUN conda env create --quiet -f /environment.yml && conda clean -a
+# Add 2.7 to the available alternatives
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 
-# Add conda installation dir to PATH (instead of doing 'conda activate')
-ENV PATH /opt/conda/envs/nf-core-circrna-1.0.0/bin:$PATH
+# Set python2.7 as the default python
+RUN update-alternatives --set python /usr/bin/python2.7
 
-# Dump the details of the installed packages to a file for posterity
-RUN conda env export --name nf-core-circrna-1.0.0 > nf-core-circrna-1.0.0.yml
+# deactivate base
+RUN sed -i '/conda activate base/d' ~/.bashrc
+
+# put /usr/bin at fron of path
+ENV PATH=/usr/bin:$PATH
+
+RUN wget https://bootstrap.pypa.io/pip/2.7/get-pip.py && python2.7 get-pip.py
+
+RUN pip install pysam numpy
 
 #find_circ
 WORKDIR /usr/src/app
 RUN wget --no-check-certificate http://www.circbase.org/download/find_circ.tar.gz
 RUN tar -xvf find_circ.tar.gz
-RUN cp *.py /opt/conda/envs/nf-core-circrna-1.0.0/bin
+RUN cp *.py /usr/bin
